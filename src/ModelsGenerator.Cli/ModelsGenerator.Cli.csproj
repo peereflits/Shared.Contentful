@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <AssemblyName>Peereflits.Shared.Contentful.ModelsGenerator.Cli</AssemblyName>
+    <RootNamespace>Peereflits.Shared.Contentful.ModelsGenerator.Cli</RootNamespace>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <IsPackable>true</IsPackable>
+    <PackAsTool>true</PackAsTool>
+    <PackageId>Peereflits.Shared.Contentful.ModelsGenerator.Cli</PackageId>
+    <PackageTags>cms;contentful;cli</PackageTags>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <Version>1.0.1</Version>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Description>Peereflits.Shared.Contentful.ModelsGenerator.Cli is a commandline interface for generating C# models/dto's from content types in Contentful.</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Package">
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <PackageDescription>
+Peereflits.Shared.Contentful.ModelsGenerator.Cli is a commandline interface for generating C# models/dto's from content types in your Contentful instance.
+This component is a shared library of Peereflits.
+    </PackageDescription>
+    <PackageIcon>PackageIcon.png</PackageIcon>
+    <PackageProjectUrl>https://github.com/peereflits/Shared.Commanding</PackageProjectUrl>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/peereflits/Shared.Commanding</RepositoryUrl>
+    <Title>Peereflits.Shared.Contentful.ModelsGenerator.Cli</Title>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="contentful.csharp" Version="7.6.0" />
+    <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="4.1.1" />
+  </ItemGroup>
+
+</Project>

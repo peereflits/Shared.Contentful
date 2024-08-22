@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "ModelsGenerator.Cli": {
+      "commandName": "Project",
+      "commandLineArgs": "-k MY_APIKEY -s MY_SPACE_ID -e MY_ENVIRONMENT"
+    }
+  }
+}
