@@ -1,7 +1,10 @@
 ![Logo](./img/peereflits-logo.png) 
 
 # Contentful.ModelsGenerator.Cli
-A dotnet CLI to automatically generate strongly typed C# models/DTO's from Contentful contenttypes.
+A dotnet CLI to automatically generate strongly typed C# models/DTO's from [Contentful](https://www.contentful.com/) contenttypes.
+
+The generated classes are based on the content-types in your Contentful space/environment and are generated as .NET/C# partial records with properties that match the (required or optional) fields in the content-types. 
+The generated files do have a dependency on `Contentful.Core.Models` in the `contentful.csharp`-[package](https://www.nuget.org/packages/contentful.csharp/).
 
 **Note:** This project is a clone and refactor of the [Contentful.ModelsCreator.Cli](https://github.com/contentful/dotnet-models-creator-cli) that at the time of creating this project ran on .NET Core 2.1.
 
