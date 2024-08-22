@@ -20,20 +20,20 @@
   </PropertyGroup>
 
   <PropertyGroup>
-    <Description>Peereflits.Shared.Contentful.ModelsGenerator.Cli is a commandline interface for generating C# models/dto's from content types in Contentful.</Description>
+    <Description>The Contentful.ModelsGenerator.Cli is a commandline interface for generating C# models/dto's from content types in Contentful.</Description>
   </PropertyGroup>
 
   <PropertyGroup Label="Package">
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageDescription>
-Peereflits.Shared.Contentful.ModelsGenerator.Cli is a commandline interface for generating C# models/dto's from content types in your Contentful instance.
+The Contentful.ModelsGenerator.Cli is a commandline interface for generating C# models/dto's from content types in your Contentful instance.
 This component is a shared library of Peereflits.
     </PackageDescription>
     <PackageIcon>PackageIcon.png</PackageIcon>
-    <PackageProjectUrl>https://github.com/peereflits/Shared.Commanding</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/peereflits/Shared.Contentful</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
-    <RepositoryUrl>https://github.com/peereflits/Shared.Commanding</RepositoryUrl>
+    <RepositoryUrl>https://github.com/peereflits/Shared.Contentful</RepositoryUrl>
     <Title>Peereflits.Shared.Contentful.ModelsGenerator.Cli</Title>
   </PropertyGroup>
 
