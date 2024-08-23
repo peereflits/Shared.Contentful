@@ -19,7 +19,7 @@ public class ModelsGenerator
     public string SpaceId { get; set; } = null!;
 
     [Option(CommandOptionType.SingleValue, Description = "The environment to fetch the content model types from", ShortName = "e")]
-    public string Environment { get; set; } = "develop";
+    public string Environment { get; set; } = "master";
 
     [Option(CommandOptionType.SingleValue, Description = "The namespace the classes should be generated in", ShortName = "ns")]
     public string Namespace { get; set; } = "Contentful.Models";
@@ -59,6 +59,9 @@ public class ModelsGenerator
 
         var writer = new ModelWriter(console, path, Force, Namespace, Internal);
         await writer.WriteModels(contentTypes);
+
+        var contentTypeResolverWriter = new ContentTypeResolverWriter(console, path, Force, Namespace, Internal);
+        await contentTypeResolverWriter.WriteContentTypeResolver(contentTypes);
 
         console.ForegroundColor = ConsoleColor.Green;
         console.WriteLine("Files successfully created!");

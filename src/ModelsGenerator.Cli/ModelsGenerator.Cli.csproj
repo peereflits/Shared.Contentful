@@ -16,7 +16,7 @@
     <PackageId>Peereflits.Shared.Contentful.ModelsGenerator.Cli</PackageId>
     <PackageTags>cms;contentful;cli</PackageTags>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>1.0.1</Version>
+    <Version>1.0.2</Version>
   </PropertyGroup>
 
   <PropertyGroup>

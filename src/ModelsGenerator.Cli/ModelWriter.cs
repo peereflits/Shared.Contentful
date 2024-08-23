@@ -6,7 +6,7 @@ using McMaster.Extensions.CommandLineUtils;
 
 namespace Peereflits.Shared.Contentful.ModelsGenerator.Cli
 {
-    internal class ModelWriter
+    internal class ModelWriter : ClassGeneratorBase
     {
         private readonly IConsole console;
         private readonly string outputDirectory;
@@ -102,23 +102,6 @@ namespace Peereflits.Shared.Contentful.ModelsGenerator.Cli
 
             return sb;
         }
-
-        private static string FormatClassName(string name) => FirstLetterToUpperCase(RemoveProhibitedCharacters(name));
-
-        private static string FirstLetterToUpperCase(string word)
-        {
-            if (string.IsNullOrEmpty(word))
-            {
-                return word;
-            }
-
-            var a = word.ToCharArray();
-            a[0] = char.ToUpper(a[0]);
-            return new string(a);
-        }
-
-        private static string RemoveProhibitedCharacters(string word) =>
-            Regex.Replace(word, "[^A-Za-z0-9_]", string.Empty);
 
         private string GetSafeFilename(string filename)
             => string
