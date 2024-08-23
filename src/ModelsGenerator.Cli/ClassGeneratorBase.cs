@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace Peereflits.Shared.Contentful.ModelsGenerator.Cli;
-public abstract class ClassGeneratorBase
+internal abstract class ClassGeneratorBase
 {
     protected static string FormatClassName(string name) => FirstLetterToUpperCase(RemoveProhibitedCharacters(name));
 

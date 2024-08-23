@@ -4,7 +4,7 @@ using Contentful.Core.Models;
 
 namespace Peereflits.Shared.Contentful.ModelsGenerator.Cli;
 
-internal class ContentTypeResolverWriter : ClassGeneratorBase
+internal sealed class ContentTypeResolverWriter : ClassGeneratorBase
 {
     private const string ClassName = "GeneratedContentTypeResolver";
 
