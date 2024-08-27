@@ -1,4 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.IO;
+using System.Threading.Tasks;
 using Contentful.Core.Models;
 using McMaster.Extensions.CommandLineUtils;
 
@@ -36,7 +40,6 @@ public class ModelsGenerator
     [VersionOption("1.0.1")]
     public bool Version { get; }
 
-
     public async Task<int> OnExecute(CommandLineApplication app, IConsole console)
     {
         var reader = new ModelReader();
@@ -45,22 +48,14 @@ public class ModelsGenerator
         var path = string.IsNullOrEmpty(Path)
             ? System.IO.Path.Combine(Directory.GetCurrentDirectory(), "Models")
             : Path;
-        console.WriteLine(string.IsNullOrWhiteSpace(Path)
+        console.WriteLine(string.IsNullOrWhiteSpace(path)
             ? $"No path specified, creating files in current working directory {path}"
             : $"Path is specified. Files will be created at {path}");
-
-        var dir = new DirectoryInfo(path);
-        if (!dir.Exists)
-        {
-            console.WriteLine($"Path {path} does not exist.");
-            dir.Create();
-            console.WriteLine($"Path {path} is created.");
-        }
 
         var writer = new ModelWriter(console, path, Force, Namespace, Internal);
         await writer.WriteModels(contentTypes);
 
-        var contentTypeResolverWriter = new ContentTypeResolverWriter(console, path, Force, Namespace, Internal);
+        var contentTypeResolverWriter = new ContentTypeResolverWriter(console, path, Namespace, Internal);
         await contentTypeResolverWriter.WriteContentTypeResolver(contentTypes);
 
         console.ForegroundColor = ConsoleColor.Green;

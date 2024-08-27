@@ -1,5 +1,7 @@
-﻿using Contentful.Core.Errors;
+﻿using System;
+using Contentful.Core.Errors;
 using System.Text.Json;
+using System.Threading.Tasks;
 using McMaster.Extensions.CommandLineUtils;
 
 namespace Peereflits.Shared.Contentful.ModelsGenerator.Cli;

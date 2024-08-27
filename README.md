@@ -6,7 +6,7 @@ A dotnet CLI to automatically generate strongly typed C# models/DTO's from [Cont
 The generated classes are based on the content-types in your Contentful space/environment and are generated as .NET/C# partial records with properties that match the (required or optional) fields in the content-types. 
 The generated files do have a dependency on `Contentful.Core.Models` in the `contentful.csharp`-[package](https://www.nuget.org/packages/contentful.csharp/).
 
-**Note:** This project is a clone and refactor of the [Contentful.ModelsCreator.Cli](https://github.com/contentful/dotnet-models-creator-cli) that at the time of creating this project ran on .NET Core 2.1.
+**Note:** This project is a clone and refactor of the [Contentful.ModelsCreator.Cli](https://github.com/contentful/dotnet-models-creator-cli) that at the time of creating this project ran on .NET Core 2.1. This repository is now a public archive.
 
 ## Prerequisites
 The CLI tool uses the "global tools" feature of .NET 8 and requires the .NET 8 SDK to be installed: https://dotnet.microsoft.com/en-us/download/dotnet/8.0 .
@@ -52,3 +52,33 @@ If you want to run the tool direclty from within Visual Studio, add a `Propertie
   }
 }
 ```
+
+## Using the generated code
+
+The generated code contains, besides one file per content type, also a file called `GeneratedContentTypeResolver.g.cs`. 
+For the Contentful client to be able to deserialize the content types, this file is needed. 
+It also is advised to use the `ResolveEntriesSelectively`-option in the `ContentfulOptions`-object when creating the client.
+
+See the code below:
+
+``` csharp
+public IContentfulClient BuildClient()
+{
+    var options = new ContentfulOptions
+    {
+        DeliveryApiKey = "MY API KEY",
+        SpaceId = "MY SPACE ID",
+        Environment = "My ENVIRONMENT",
+        UsePreviewApi = false,
+        ResolveEntriesSelectively = true,
+    };
+
+    return new ContentfulClient(factory.CreateClient(nameof(ContentfulClientBuilder)), options)
+    {
+        ContentTypeResolver = new GeneratedContentTypeResolver()
+    };
+}
+
+```
+
+An implementation example can be found [here](./src/Contentful.Implementation/ReadMe.md).

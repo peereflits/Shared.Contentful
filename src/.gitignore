@@ -1,0 +1,3 @@
+# local ignores
+
+**/testsettings.Development.json

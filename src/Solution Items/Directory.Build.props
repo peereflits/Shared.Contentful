@@ -2,6 +2,7 @@
 
   <PropertyGroup>
     <ApplicationIcon>..\Solution Items\favicon.ico</ApplicationIcon>
+    <ImplicitUsings>disable</ImplicitUsings>
     <LangVersion>latest</LangVersion>
     <Nullable>enable</Nullable>
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -11,10 +12,6 @@
     <Authors>Peereflits</Authors>
     <Copyright>No Copyright &#169;, The Netherlands</Copyright>
     <Product>Peereflits.Shared.Commanding</Product>
-  </PropertyGroup>
-
-  <PropertyGroup Label="Package">
-    <VersionPrefix>1.0.2</VersionPrefix>
   </PropertyGroup>
 
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

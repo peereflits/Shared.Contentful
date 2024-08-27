@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Text.RegularExpressions;
-using System.Threading.Tasks;
+﻿using System.Text.RegularExpressions;
 
 namespace Peereflits.Shared.Contentful.ModelsGenerator.Cli;
+
 internal abstract class ClassGeneratorBase
 {
     protected static string FormatClassName(string name) => FirstLetterToUpperCase(RemoveProhibitedCharacters(name));

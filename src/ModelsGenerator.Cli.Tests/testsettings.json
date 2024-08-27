@@ -1,0 +1,7 @@
+﻿{
+  "TestSettings": {
+    "ApiKey": "My Contentful Api Key",
+    "SpaceId": "My Contentful Space Id",
+    "Environment": "master"
+  }
+}

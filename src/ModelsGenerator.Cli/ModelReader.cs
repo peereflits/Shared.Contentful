@@ -1,23 +1,25 @@
-﻿using Contentful.Core;
+﻿using System.Collections.Generic;
+using System.Net.Http;
+using System.Threading.Tasks;
+using Contentful.Core;
 using Contentful.Core.Configuration;
 using Contentful.Core.Models;
 
-namespace Peereflits.Shared.Contentful.ModelsGenerator.Cli
-{
-    internal class ModelReader
-    {
-        public async Task<IEnumerable<ContentType>> Execute(string apiKey, string spaceId, string environment)
-        {
-            using var http = new HttpClient();
-            var options = new ContentfulOptions
-            {
-                DeliveryApiKey = apiKey,
-                SpaceId = spaceId,
-                Environment = environment
-            };
+namespace Peereflits.Shared.Contentful.ModelsGenerator.Cli;
 
-            var client = new ContentfulClient(http, options);
-            return await client.GetContentTypes();
-        }
+internal class ModelReader
+{
+    public async Task<IEnumerable<ContentType>> Execute(string apiKey, string spaceId, string environment)
+    {
+        using var http = new HttpClient();
+        var options = new ContentfulOptions
+        {
+            DeliveryApiKey = apiKey,
+            SpaceId = spaceId,
+            Environment = environment
+        };
+
+        var client = new ContentfulClient(http, options);
+        return await client.GetContentTypes();
     }
 }

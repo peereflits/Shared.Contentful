@@ -4,9 +4,6 @@
     <AssemblyName>Peereflits.Shared.Contentful.ModelsGenerator.Cli</AssemblyName>
     <RootNamespace>Peereflits.Shared.Contentful.ModelsGenerator.Cli</RootNamespace>
     <TargetFramework>net8.0</TargetFramework>
-    <Nullable>enable</Nullable>
-    <ImplicitUsings>enable</ImplicitUsings>
-	<TreatWarningsAsErrors>true</TreatWarningsAsErrors>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -35,6 +32,7 @@ This component is a shared library of Peereflits.
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/peereflits/Shared.Contentful</RepositoryUrl>
     <Title>Peereflits.Shared.Contentful.ModelsGenerator.Cli</Title>
+    <VersionPrefix>1.0.2</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
@@ -46,6 +44,11 @@ This component is a shared library of Peereflits.
   <ItemGroup>
     <PackageReference Include="contentful.csharp" Version="8.0.1" />
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="4.1.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <InternalsVisibleTo Include="Peereflits.Shared.Contentful.ModelsGenerator.Cli.Tests" />
+    <InternalsVisibleTo Include="DynamicProxyGenAssembly2" />
   </ItemGroup>
 
 </Project>
