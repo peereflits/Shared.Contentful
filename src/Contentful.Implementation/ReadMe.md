@@ -13,6 +13,8 @@ Key takeaways are:
 
 The `ContentPagesQuery` contains basic examples of how to query Contentful for entries of a specific content type.
 
+The other code should be fairly self-explanatory. If not, drop me a note.
+
 ## How to run this example
 
 In order to run this example, you need to have a Contentful account and a space. 

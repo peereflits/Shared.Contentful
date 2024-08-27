@@ -9,6 +9,7 @@ public class IntegrationTestsFixture
         var builder = new ConfigurationBuilder()
             .AddJsonFile("testsettings.json")
             .AddJsonFile("testsettings.Development.json", true)
+            .AddEnvironmentVariables()
             .Build();
 
         var settings = new TestSettings();
