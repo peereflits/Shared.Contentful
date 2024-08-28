@@ -11,7 +11,6 @@ on:
 
 env:
   API_KEY : ${{ secrets.PAT_CLASSIC }}
-  DOTNET_VERSION: 8.0.x
   DOTNET_SOLUTION: src/ModelsGenerator.Cli.sln
   TESTSETTINGS_APIKEY: ${{ secrets.TESTSETTINGS_APIKEY }}
   TESTSETTINGS_SPACEID: ${{ secrets.TESTSETTINGS_SPACEID }}
@@ -31,7 +30,8 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v4
       with:
-        dotnet-version: ${{ env.DOTNET_VERSION }}
+        dotnet-version: |
+          8.0.x
 
     - name: Restore and build
       run: |

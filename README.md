@@ -1,4 +1,4 @@
-![Logo](./img/peereflits-logo.png) 
+![Logo](./img/peereflits-logo.svg) 
 
 # Contentful.ModelsGenerator.Cli
 **A dotnet CLI to automatically generate strongly typed C# models/DTO's from [Contentful](https://www.contentful.com/) contenttypes.**

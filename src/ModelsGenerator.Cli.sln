@@ -7,14 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelsGenerator.Cli", "Mode
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0413B93E-ADF7-4159-B984-6166DD36BD4B}"
 	ProjectSection(SolutionItems) = preProject
-		Solution Items\Directory.Build.props = Solution Items\Directory.Build.props
 		Solution Items\favicon.ico = Solution Items\favicon.ico
 		Solution Items\PackageIcon.png = Solution Items\PackageIcon.png
 	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ModelsGenerator.Cli.Tests", "ModelsGenerator.Cli.Tests\ModelsGenerator.Cli.Tests.csproj", "{A9B34863-FA6D-4F4A-A2D7-FC21BFC0836A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contentful.Example.Implementation", "Contentful.Implementation\Contentful.Example.Implementation.csproj", "{787A56F4-0CD2-4107-A7D0-2A7D8011BE48}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contentful.Example.Implementation", "Contentful.Implementation\Contentful.Example.Implementation.csproj", "{787A56F4-0CD2-4107-A7D0-2A7D8011BE48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

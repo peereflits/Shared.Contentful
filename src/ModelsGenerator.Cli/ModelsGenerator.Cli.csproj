@@ -27,6 +27,7 @@ The Contentful.ModelsGenerator.Cli is a commandline interface for generating C# 
 This component is a shared library of Peereflits.
     </PackageDescription>
     <PackageIcon>PackageIcon.png</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/peereflits/Shared.Contentful</PackageProjectUrl>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
