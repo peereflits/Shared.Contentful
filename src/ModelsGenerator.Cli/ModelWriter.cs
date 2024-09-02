@@ -49,6 +49,7 @@ internal class ModelWriter : ClassGeneratorBase
             {
                 console.ForegroundColor = ConsoleColor.Yellow;
                 var msg = $"The file '{fileName}.g.cs' already exists. Do you want to overwrite it? [y/n]";
+                console.WriteLine(msg);
                 bool isYes = (await console.In.ReadLineAsync())?.ToLowerInvariant() == "y";
                 console.ResetColor();
 
@@ -146,7 +147,7 @@ internal class ModelWriter : ClassGeneratorBase
     {
         if (field.LinkType == nameof(Asset))
         {
-            return  nameof(Asset);
+            return nameof(Asset);
         }
 
         if (field.LinkType != "Entry")
@@ -154,12 +155,15 @@ internal class ModelWriter : ClassGeneratorBase
             return "object";
         }
 
-        var validator = GetLinkContentTypeValidators(field).FirstOrDefault();
+        var validator = GetFieldContentTypeValidators(field).FirstOrDefault();
 
         return validator?.ContentTypeIds.Count == 1
             ? GetDataTypeForContentTypeId(validator.ContentTypeIds[0])
             : "object";
     }
+
+    private static List<LinkContentTypeValidator> GetFieldContentTypeValidators(Field field) =>
+        field.Validations.OfType<LinkContentTypeValidator>().ToList();
 
     private string GetDataTypeForContentTypeId(string contentTypeId)
     {
@@ -184,25 +188,19 @@ internal class ModelWriter : ClassGeneratorBase
             return "object";
         }
 
-        if (!GetListContentTypeValidators(field).Any())
+        var validators = GetFieldItemsContentTypeValidators(field);
+        if (!validators.Any())
         {
             return "List<object>";
         }
 
-        var validator = GetListContentTypeValidators(field).FirstOrDefault();
+        var contentTypeIds = validators.SelectMany(x => x.ContentTypeIds).ToList();
 
-        return validator?.ContentTypeIds.Any() ?? false
-            ? $"List<{GetDataTypeForContentTypeId(validator.ContentTypeIds[0])}>"
+        return contentTypeIds.Count == 1
+            ? $"List<{GetDataTypeForContentTypeId(contentTypeIds[0])}>"
             : "List<object>";
     }
 
-    private static List<LinkContentTypeValidator> GetLinkContentTypeValidators(Field field) =>
-        field.Validations == null
-            ? []
-            : field.Validations.OfType<LinkContentTypeValidator>().ToList();
-
-    private static List<LinkContentTypeValidator> GetListContentTypeValidators(Field field) =>
-        field.Items == null
-            ? []
-            : field.Items.Validations.OfType<LinkContentTypeValidator>().ToList();
+    private static List<LinkContentTypeValidator> GetFieldItemsContentTypeValidators(Field field) =>
+        field.Items?.Validations.OfType<LinkContentTypeValidator>().ToList() ?? [];
 }
