@@ -11,17 +11,13 @@ using Contentful.Core.Models;
 namespace Contentful.Implementation.Models;
 
 #pragma warning disable CS8669
-internal partial record ContentPage
+internal partial record Note
 {
-    public const string ContentTypeId = "contentPage";
+    public const string ContentTypeId = "note";
     public required SystemProperties Sys { get; set; }
     public required string Title { get; set; }
-    public required string Slug { get; set; }
-    public required string Summary { get; set; }
-    public Asset? Image { get; set; }
-    public string? Author { get; set; }
-    public Document? Content { get; set; }
-    public List<object> SeeAlso { get; set; }
+    public DateTime Date { get; set; }
+    public string? Content { get; set; }
 }
 #pragma warning restore CS8669
 

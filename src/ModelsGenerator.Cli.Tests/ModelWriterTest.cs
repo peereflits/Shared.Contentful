@@ -104,7 +104,7 @@ public class ModelWriterTest
     }
 
     [Fact]
-    public async Task WhenWriteModels_WhitShouldOverwrite_ItShouldOverwriteExistingFiles()
+    public async Task WhenWriteModels_WithShouldOverwrite_ItShouldOverwriteExistingFiles()
     {
         var shouldOverWrite = true;
 

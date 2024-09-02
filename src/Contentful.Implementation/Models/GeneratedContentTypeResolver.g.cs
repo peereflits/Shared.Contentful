@@ -14,6 +14,10 @@ internal partial class GeneratedContentTypeResolver : IContentTypeResolver
     private readonly Dictionary<string, Type> types = new Dictionary<string, Type>()
     {
         [ContentPage.ContentTypeId] = typeof(ContentPage),
+        [Note.ContentTypeId] = typeof(Note),
+        [Blog.ContentTypeId] = typeof(Blog),
+        [InternalLink.ContentTypeId] = typeof(InternalLink),
+        [ExternalLink.ContentTypeId] = typeof(ExternalLink),
     };
 
     public Type? Resolve(string contentTypeId)
