@@ -2,7 +2,7 @@
   "profiles": {
     "ModelsGenerator.Cli": {
       "commandName": "Project",
-      "commandLineArgs": "-k eVF44K2p5njCsZc8HSILTHT6FQjy2N6mBVH6S3HKDBg -s eu8yf2gt5cm4 -e master -ns Contentful.Implementation.Models -p C:\\\\Projects\\Peereflits\\Shared.Contentful\\src\\Contentful.Implementation\\Models"
+      "commandLineArgs": "-k MY_APIKEY -s MY_SPACE_ID -e MY_ENVIRONMENT"
     }
   }
 }

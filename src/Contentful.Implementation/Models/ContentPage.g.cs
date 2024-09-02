@@ -21,7 +21,6 @@ internal partial record ContentPage
     public Asset? Image { get; set; }
     public string? Author { get; set; }
     public Document? Content { get; set; }
-    public List<object> SeeAlso { get; set; }
 }
 #pragma warning restore CS8669
 
