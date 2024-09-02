@@ -35,7 +35,7 @@ public class ModelsGenerator
     public string Path { get; set; } = "";
 
     [Option(CommandOptionType.NoValue, Description = "Generate the contacts as internal classes", ShortName = "i")]
-    public bool Internal { get; set; } = true;
+    public bool Internal { get; set; } = false;
 
     [VersionOption("1.0.3")]
     public bool Version { get; }

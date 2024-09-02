@@ -31,16 +31,16 @@ Once installed you should now be able to run `contentful.modelsgenerator.cli --h
 * Parameters for communicating with Contentful:
    - `-k` or `-apikey`: sets the Contentful (delivery) Api **K**ey. Required.
    - `-s` or `-spaceid`: sets the Contentful **S**pace id of your Contentful instance Required.
-   - `-e` or `-environment`: specifies the environment that contains the content-types that need to be generated. Optional, defaults to `develop`.
+   - `-e` or `-environment`: specifies the environment that contains the content-types that need to be generated. Optional, defaults to `master`.
 
 * Code generation parameters:
    - `-ns` or `-namespace`: sets the namespace for the classes being created, Optional, defaults to `Contentful.Models`.
    - `-f` or `-force`: a flag that forces an overwrite of any existing files. Optional, default is `true`.
    - `-p` or `-path`: sets the output folder where the class files should be generated. Optional, defaults to a `Models`-folder under the current directory.
-   - `-i` or `-internal` a flag to generate the classes with an internal access modifier. Optional, is default `true`. If omitted classes will be generated with a public access modifier.
+   - `-i` or `-internal`: a flag to generate the classes with an internal access modifier. Optional, is default `false`. If omitted classes will be generated with a `public` access modifier. If `-i` is provided, an `internal` access modifier is used.
 
 ### Examples
-Running `contentful.modelsgenerator.cli -k YOUR_API_KEY -s YOUR_SPACE_ID -e YOUR_ENVIRONMENT` will create a number of classes in a `Models`-folder under your current working directory.
+Running `contentful.modelsgenerator.cli -k YOUR_API_KEY -s YOUR_SPACE_ID -e YOUR_ENVIRONMENT` will create a number of public classes (records) in a `Models`-folder under your current working directory.
 
 If you want to specify the namespace of the created classes use the `-ns` switch: `contentful.modelsgenerator.cli -k YOUR_API_KEY -s YOUR_SPACE_ID -e YOUR_ENVIRONMENT -ns MyProject.ASubNamespace.Models` 
 
