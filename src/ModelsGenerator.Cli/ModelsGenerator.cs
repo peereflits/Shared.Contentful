@@ -37,7 +37,7 @@ public class ModelsGenerator
     [Option(CommandOptionType.NoValue, Description = "Generate the contacts as internal classes", ShortName = "i")]
     public bool Internal { get; set; } = true;
 
-    [VersionOption("1.0.1")]
+    [VersionOption("1.0.3")]
     public bool Version { get; }
 
     public async Task<int> OnExecute(CommandLineApplication app, IConsole console)
@@ -52,7 +52,8 @@ public class ModelsGenerator
             ? $"No path specified, creating files in current working directory {path}"
             : $"Path is specified. Files will be created at {path}");
 
-        var writer = new ModelWriter(console, path, Force, Namespace, Internal);
+        IGenerateType generator = new TypeGenerator(Namespace, Internal, contentTypes);
+        var writer = new ModelWriter(console, path, Force, generator);
         await writer.WriteModels(contentTypes);
 
         var contentTypeResolverWriter = new ContentTypeResolverWriter(console, path, Namespace, Internal);

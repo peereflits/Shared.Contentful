@@ -5,17 +5,18 @@ using Contentful.Core.Models;
 using McMaster.Extensions.CommandLineUtils;
 using NSubstitute;
 using Xunit;
-
 using File = System.IO.File;
 
 namespace Peereflits.Shared.Contentful.ModelsGenerator.Cli.Tests;
 
 public class ModelWriterTest
 {
+    private const string GeneratedContent = "=== This is generated content. ===";
+    private const string ExistingContent = "This is existing content.";
+
     private readonly IConsole console;
     private readonly string outputDirectory;
-    private readonly string @namespace;
-    private readonly bool isInternal;
+    private readonly IGenerateType typeGenerator;
 
     public ModelWriterTest()
     {
@@ -34,13 +35,15 @@ public class ModelWriterTest
 
 
         outputDirectory = Path.Combine(Path.GetTempPath(), "ModelWriterTests");
-        @namespace = "TestNamespace";
-        isInternal = true;
-
         if (!Directory.Exists(outputDirectory))
         {
             Directory.CreateDirectory(outputDirectory);
         }
+
+        typeGenerator = Substitute.For<IGenerateType>();
+        typeGenerator
+            .Generate(Arg.Any<ContentType>())
+            .Returns(GeneratedContent);
     }
 
     [Fact]
@@ -51,28 +54,21 @@ public class ModelWriterTest
             new ContentType
             {
                 SystemProperties = new SystemProperties { Id = "myOwnContentType" },
-                Fields =
-                [
-                    new Field { Id = "field1", Type = "Text", Required = true },
-                    new Field { Id = "field2", Type = "Integer", Required = false }
-                ]
+                Fields = []
             }
         };
 
-        var subject = new ModelWriter(console, outputDirectory, true, @namespace, isInternal);
+        var subject = new ModelWriter(console, outputDirectory, true, typeGenerator);
 
         await subject.WriteModels(contentTypes);
 
         var generatedFile = Path.Combine(outputDirectory, "MyOwnContentType.g.cs");
         Assert.True(File.Exists(generatedFile));
-        var generatedContent = await File.ReadAllTextAsync(generatedFile);
+
+        var content = await File.ReadAllTextAsync(generatedFile);
         Directory.Delete(outputDirectory, true);
 
-        Assert.Contains($"namespace {@namespace};", generatedContent);
-        Assert.Contains("internal partial record MyOwnContentType", generatedContent);
-        Assert.Contains("public const string ContentTypeId = \"myOwnContentType\";", generatedContent);
-        Assert.Contains("public required string Field1 { get; set; }", generatedContent);
-        Assert.Contains("public int? Field2 { get; set; }", generatedContent);
+        Assert.Contains(GeneratedContent, content);
     }
 
     [Fact]
@@ -81,55 +77,53 @@ public class ModelWriterTest
         var shouldOverWrite = false;
 
         var existingFile = Path.Combine(outputDirectory, "TestContentType.g.cs");
-        await File.WriteAllTextAsync(existingFile, "Existing content");
+        await File.WriteAllTextAsync(existingFile, ExistingContent);
 
         var contentTypes = new List<ContentType>
         {
             new ContentType
             {
                 SystemProperties = new SystemProperties { Id = "testContentType" },
-                Fields = [new Field { Id = "field1", Type = "Text", Required = true }]
+                Fields = []
             }
         };
 
-        var subject = new ModelWriter(console, outputDirectory, shouldOverWrite, @namespace, isInternal);
+        var subject = new ModelWriter(console, outputDirectory, shouldOverWrite, typeGenerator);
 
         await subject.WriteModels(contentTypes);
 
         var content = await File.ReadAllTextAsync(existingFile);
 
         Directory.Delete(outputDirectory, true);
-        
-        Assert.Equal("Existing content", content);
+
+        Assert.Equal(ExistingContent, content);
     }
 
     [Fact]
-    public async Task WhenWriteModels_WhitShouldOverwrite_ItShouldOverwriteExistingFiles()
+    public async Task WhenWriteModels_WithShouldOverwrite_ItShouldOverwriteExistingFiles()
     {
         var shouldOverWrite = true;
 
         var existingFile = Path.Combine(outputDirectory, "TestContentType.g.cs");
-        await File.WriteAllTextAsync(existingFile, "Existing content");
+        await File.WriteAllTextAsync(existingFile, ExistingContent);
 
         var contentTypes = new List<ContentType>
         {
             new ContentType
             {
                 SystemProperties = new SystemProperties { Id = "testContentType" },
-                Fields = [new Field { Id = "field1", Type = "Text", Required = true }]
+                Fields = []
             }
         };
 
-        var subject = new ModelWriter(console, outputDirectory, shouldOverWrite, @namespace, isInternal);
+        var subject = new ModelWriter(console, outputDirectory, shouldOverWrite, typeGenerator);
 
         await subject.WriteModels(contentTypes);
 
         var content = await File.ReadAllTextAsync(existingFile);
 
         Directory.Delete(outputDirectory, true);
-        
-        Assert.DoesNotContain("Existing content", content);
-        Assert.Contains("public const string ContentTypeId = \"testContentType\";", content);
-        Assert.Contains("public required string Field1 { get; set; }", content);
+
+        Assert.DoesNotContain(ExistingContent, content);
     }
 }
