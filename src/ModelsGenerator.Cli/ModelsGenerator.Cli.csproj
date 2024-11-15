@@ -3,7 +3,7 @@
   <PropertyGroup>
     <AssemblyName>Peereflits.Shared.Contentful.ModelsGenerator.Cli</AssemblyName>
     <RootNamespace>Peereflits.Shared.Contentful.ModelsGenerator.Cli</RootNamespace>
-    <TargetFramework>net8.0</TargetFramework>
+    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -13,7 +13,7 @@
     <PackageId>Peereflits.Shared.Contentful.ModelsGenerator.Cli</PackageId>
     <PackageTags>cms;contentful;cli</PackageTags>
     <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
-    <Version>1.0.2</Version>
+    <Version>1.0.3</Version>
   </PropertyGroup>
 
   <PropertyGroup>
@@ -33,7 +33,7 @@ This component is a shared library of Peereflits.
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/peereflits/Shared.Contentful</RepositoryUrl>
     <Title>Peereflits.Shared.Contentful.ModelsGenerator.Cli</Title>
-    <VersionPrefix>1.0.2</VersionPrefix>
+    <VersionPrefix>1.0.3</VersionPrefix>
   </PropertyGroup>
 
   <ItemGroup>
@@ -43,7 +43,7 @@ This component is a shared library of Peereflits.
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="contentful.csharp" Version="8.0.1" />
+    <PackageReference Include="contentful.csharp" Version="8.3.0" />
     <PackageReference Include="McMaster.Extensions.CommandLineUtils" Version="4.1.1" />
   </ItemGroup>
 

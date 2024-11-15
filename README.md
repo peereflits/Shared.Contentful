@@ -7,14 +7,14 @@ The generated classes are based on the content-types in your Contentful space/en
 The generated files do have a dependency on `Contentful.Core.Models` in the `contentful.csharp`-[package](https://www.nuget.org/packages/contentful.csharp/).
 
 This project is a clone and refactor of the [Contentful.ModelsCreator.Cli](https://github.com/contentful/dotnet-models-creator-cli) that at the time of creating this project ran on .NET Core 2.1. 
-This repository is now a public archive. The `Contentful.ModelsGenerator.Cli` is a .NET 8 project and is intended to be used in .NET 8 projects. It fixes some issues in the original project and adds some new features like:
+This repository is now a public archive. The `Contentful.ModelsGenerator.Cli` is a .NET 8.0/9.0 project and is intended to be used in projects with the same or newer version number. It fixes some issues in the original project and adds some new features like:
 1. using records
 1. making required/optional explicit
 1. generate the types as partial
 1. generate the types with an internal or public access modifier
 
 ## Prerequisites
-The CLI tool uses the "global tools" feature of .NET 8 and requires the .NET 8 SDK to be installed: https://dotnet.microsoft.com/en-us/download/dotnet/8.0 .
+The CLI tool uses the "global tools" feature of .NET 8.0/9.0 and requires the .NET SDK to be installed: https://dotnet.microsoft.com/en-us/download/dotnet/ .
 
 Before installation the project must be published and packed (default to Nuget). Otherwise, run this command as a console app (Debug | Start without debugging).
 
